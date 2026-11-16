@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "IFNB1 stimulation effect on lupus PBMC"
+abstract: "Evaluation of transcriptomics effect of IFNB1 stimulation on single cell lupus PBMC"
+type: software
+authors:
+  - given-names: "Aleksandr"
+    family-names: "Matsun"
+    email: "aleksandr.matsun@mbzuai.ac.ae"
+    orcid: "https://orcid.org/0000-0002-1518-8240"
+repository-code: "https://github.com/SashaMatsun/capstone-project"
+license: CC-BY-4.0
+version: 0.1.0
+date-released: "2026-11-16"
