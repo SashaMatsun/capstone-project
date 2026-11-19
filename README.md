@@ -38,8 +38,14 @@ Each folder has its own `README.md` with more detail.
 
 ## Data
 
-Describe here where the raw data comes from (repository, accession or DOI,
-license) and how it is downloaded. List checksums in `metadata/`.
+### Data provenance
+
+Daniel Dimitrov (2023), SingleCellExperiment Object for Kang et al., 2018 PBMCs data, v1. https://doi.org/10.5281/zenodo.10069528
+Original study: Kang et al., https://doi.org/10.1038/nbt.4042 (GEO GSE96583).
+Data license: CC BY 4.0, documented for this DOI at https://datasetcatalog.nlm.nih.gov/dataset?q=0002045872 .
+License terms: https://creativecommons.org/licenses/by/4.0/ .
+
+The MD5 in metadata/sources.tsv comes from Zenodo. The first run checks this MD5 and calculates the project SHA-256 on those exact RDS bytes. Both hashes apply to the same file. A converted H5AD is a derived output with its own bytes. Write derived outputs outside data/raw/.
 
 ## How to cite
 
