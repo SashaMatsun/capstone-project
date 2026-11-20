@@ -1,0 +1,17 @@
+rule all:
+    input:
+        "data/processed/kang_counts.h5ad",
+
+
+rule convert_data:
+    input:
+        rds="data/raw/kang_counts_25k.RDS",
+        script="scripts/convert_data.py",
+        environment="pixi.lock",
+    output:
+        h5ad="data/processed/kang_counts.h5ad",
+    log:
+        "results/logs/convert_data.log",
+    shell:
+        "python {input.script:q} --input {input.rds:q} --output {output.h5ad:q} "
+        "> {log:q} 2>&1"

@@ -19,6 +19,25 @@ papermill = ">=2.6"   # Quarto needs it for report parameters (-P)
 
 [tasks]
 check = { cmd = "python --version && quarto --version", description = "Check that the tools work" }
-# `reproduce` must rebuild every result from the raw data with one command.
-# The lessons replace this placeholder with real steps.
-reproduce = { cmd = "python -c \"print('Nothing to reproduce yet: add your steps to the reproduce task in pixi.toml')\"", description = "Rebuild all results from raw data" }
+download = { cmd = "python scripts/download_data.py" }
+verify-data = { cmd = "python scripts/download_data.py --verify-only" }
+reproduce = { depends-on = [{ task = "run-snakemake", environment = "pipeline" }] }
+
+[feature.pipeline]
+platforms = ["linux-64", "osx-arm64", "osx-64"]
+
+[feature.pipeline.dependencies]
+snakemake = ">=9.27.1,<10"
+numpy = ">=2.5.5,<3"
+scipy = ">=1.18.1,<2"
+anndata = ">=0.13.4,<0.14"
+
+[feature.pipeline.pypi-dependencies]
+rds2py = { version = "==0.10.6", extras = ["optional"] }
+
+[feature.pipeline.tasks]
+run-snakemake = { cmd = "snakemake --snakefile workflow/Snakefile --cores 2 --rerun-incomplete", depends-on = ["download"] }
+dry-run = { cmd = "snakemake --snakefile workflow/Snakefile --cores 2 --dry-run" }
+
+[environments]
+pipeline = ["pipeline"]

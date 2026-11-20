@@ -1,0 +1,9 @@
+cell_type: "CD14+ Monocytes"
+gene: "ISG15"
+
+donor_column: "patient"
+condition_column: "condition"
+cell_type_column: "cell_type"
+
+control_condition: "ctrl"
+stimulated_condition: "stim"

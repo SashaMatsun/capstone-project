@@ -1,6 +1,6 @@
 # IFNB1 stimulation effect on lupus PBMC
 
-Evaluation of transcriptomics effect of IFNB1 stimulation on single cell lupus PBMC
+Evaluation of transcriptomic effect of IFNB1 stimulation on single cell lupus PBMC
 
 Author: Aleksandr Matsun ([ORCID 0000-0002-1518-8240](https://orcid.org/0000-0002-1518-8240))
 
