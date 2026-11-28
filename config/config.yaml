@@ -1,5 +1,6 @@
-cell_type: "CD14+ Monocytes"
 gene: "ISG15"
+cell_types:
+  - "CD14+ Monocytes"
 
 donor_column: "patient"
 condition_column: "condition"

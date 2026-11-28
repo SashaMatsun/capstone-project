@@ -1,6 +1,8 @@
 rule all:
     input:
         "data/processed/kang_counts.h5ad",
+        "results/expression_per_cell.tsv",
+        "results/expression_by_donor.tsv",
 
 
 rule convert_data:
@@ -14,4 +16,20 @@ rule convert_data:
         "results/logs/convert_data.log",
     shell:
         "python {input.script:q} --input {input.rds:q} --output {output.h5ad:q} "
+        "> {log:q} 2>&1"
+
+rule extract_expression:
+    input:
+        h5ad="data/processed/kang_counts.h5ad",
+        config="config/config.yaml",
+        script="scripts/extract_expression.py",
+        environment="pixi.lock",
+    output:
+        cells="results/expression_per_cell.tsv",
+        donors="results/expression_by_donor.tsv",
+    log:
+        "results/logs/extract_expression.log",
+    shell:
+        "python {input.script:q} --input {input.h5ad:q} --config {input.config:q} "
+        "--cells-output {output.cells:q} --donors-output {output.donors:q} "
         "> {log:q} 2>&1"
